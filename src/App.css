@@ -1,0 +1,3163 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+
+
+:root {
+
+  font-family: 'DM Sans', sans-serif;
+
+  color: #24232a;
+
+  background: #f7f7f8;
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+
+  font-optical-sizing: auto;
+
+  font-weight: 400;
+
+  --red: #991b1b;
+
+  --red-dark: #741313;
+
+  --red-light: #fff0ef;
+
+  --border: #e8e7e9;
+
+  --muted: #777680;
+
+  --surface: #fff;
+
+  --green: #16834a;
+
+}
+
+
+
+\* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+
+button, input, select, textarea { font: inherit; }
+
+button { cursor: pointer; }
+
+button:disabled { opacity: .55; cursor: not-allowed; }
+
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+
+  outline: 3px solid #f2b9b9;
+
+  outline-offset: 2px;
+
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1, h2, h3, strong { font-family: 'Manrope', sans-serif; }
+
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+
+.topbar {
+
+  height: 78px; background: #fff; border-bottom: 1px solid var(--border);
+
+  display: flex; align-items: center; justify-content: space-between;
+
+  padding: 0 max(calc((100vw - 1180px)/2), 5.5%); gap: 20px;
+
+}
+
+.brand { display: flex; gap: 11px; align-items: center; border: 0; background: none; text-align: left; color: inherit; }
+
+.brand-mark { width: 43px; height: 43px; display: grid; place-items: center; color: white; background: var(--red); border-radius: 12px; }
+
+.brand strong, .brand small { display: block; }
+
+.brand strong { font-size: 14px; letter-spacing: .02em; }
+
+.brand small { margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: .13em; }
+
+.topbar nav { display: flex; align-items: center; gap: 12px; }
+
+.nav-link, .nav-admin { border: 0; background: none; padding: 11px 14px; font-weight: 600; font-size: 13px; border-radius: 9px; }
+
+.nav-link { color: #55535d; }
+
+.nav-link:hover { background: #f5f4f5; }
+
+.nav-admin { display: flex; align-items: center; gap: 8px; background: var(--red); color: white; }
+
+.nav-admin:hover, .primary-button:hover, .search-form button:hover { background: var(--red-dark); }
+
+
+
+.hero {
+
+  background: linear-gradient(118deg, #6f1014 0%, #971b20 58%, #b72c30 100%);
+
+  color: white; min-height: 370px; padding: 62px max(calc((100vw - 1120px)/2), 6%);
+
+  display: flex; align-items: center; justify-content: space-between; gap: 42px;
+
+  position: relative; overflow: hidden;
+
+}
+
+.hero::after { content: ""; position: absolute; width: 500px; height: 500px; border: 1px solid #ffffff12; border-radius: 50%; right: -80px; top: -260px; pointer-events: none; }
+
+.hero-content { max-width: 650px; position: relative; z-index: 1; }
+
+.eyebrow, .section-kicker { font-size: 10px; letter-spacing: .15em; font-weight: 800; }
+
+.eyebrow { display: inline-flex; gap: 9px; align-items: center; color: #ffd7d7; }
+
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #ffb2a7; box-shadow: 0 0 0 4px #ffffff15; }
+
+.hero h1 { font-size: clamp(36px, 5vw, 55px); line-height: 1.13; letter-spacing: -.045em; margin: 20px 0 14px; font-weight: 800; }
+
+.hero h1 em { font-style: normal; color: #ffcebd; }
+
+.hero-content > p { max-width: 520px; line-height: 1.75; font-size: 14px; color: #f8dfe0; margin-bottom: 24px; }
+
+.search-form { display: flex; align-items: center; gap: 12px; padding: 7px; background: white; color: #555; border-radius: 12px; box-shadow: 0 12px 30px #37090d20; max-width: 590px; }
+
+.search-form > svg { margin-left: 10px; flex-shrink: 0; color: #9995a0; }
+
+.search-form input { min-width: 0; flex: 1; border: 0; outline: 0; padding: 12px 0; color: #26232a; background: transparent; }
+
+.search-form input:focus-visible { outline: none; }
+
+.search-form button { background: var(--red); color: white; border: 0; border-radius: 8px; padding: 13px 19px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+
+.search-note { display: block; margin-top: 11px; color: #f0cfd0; font-size: 11px; }
+
+.hero-emblem { width: 225px; height: 225px; flex-shrink: 0; border: 1px solid #ffffff44; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: #ffffff09; position: relative; z-index: 1; }
+
+.emblem-ring { width: 100px; height: 100px; border: 1px solid #ffffff80; border-radius: 50%; display: grid; place-items: center; color: #ffdfc9; margin-bottom: 5px; }
+
+.hero-emblem span { font-size: 8px; letter-spacing: .16em; color: #f3d4d4; }
+
+.hero-emblem strong { font-size: 14px; }
+
+.hero-emblem small { font-size: 9px; color: #f3d4d4; letter-spacing: .2em; }
+
+
+
+.public-main { width: min(1120px, 88%); margin: 0 auto; padding: 44px 0 65px; flex: 1; }
+
+.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 24px; }
+
+.section-kicker { color: var(--red); display: block; margin-bottom: 8px; }
+
+.section-heading h2 { margin: 0; font-size: 25px; letter-spacing: -.04em; }
+
+.secure-note { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #686671; padding: 9px 12px; border: 1px solid var(--border); background: white; border-radius: 20px; }
+
+.results-area { display: flex; flex-direction: column; gap: 17px; }
+
+.participant-heading { display: flex; align-items: center; gap: 15px; margin: 4px 0 5px; }
+
+.avatar { width: 50px; height: 50px; border-radius: 15px; display: grid; place-items: center; background: #fce7e7; color: var(--red); font-size: 20px; font-weight: 800; }
+
+.participant-heading h3 { margin: 0 0 3px; font-size: 19px; }
+
+.participant-heading p { color: var(--muted); font-size: 12px; margin: 0; }
+
+.result-count { font-size: 12px; color: var(--muted); margin: 4px 0 0; }
+
+.result-list { display: grid; gap: 12px; }
+
+.result-card { display: flex; gap: 14px; align-items: center; background: white; border: 1px solid var(--border); border-radius: 13px; padding: 17px; }
+
+.result-icon { flex-shrink: 0; width: 43px; height: 43px; display: grid; place-items: center; border-radius: 12px; }
+
+.result-passed .result-icon { background: #e7f7ed; color: #16834a; }
+
+.result-failed .result-icon { background: #fff0ef; color: var(--red); }
+
+.result-body { flex: 1; min-width: 0; }
+
+.result-body h3 { font-size: 14px; margin: 0 0 5px; }
+
+.result-body p { font-size: 12px; line-height: 1.6; color: var(--muted); margin: 0; }
+
+.status-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 800; border-radius: 7px; padding: 8px 10px; white-space: nowrap; }
+
+.status-badge.passed { color: #167542; background: #e7f7ed; }
+
+.status-badge.failed { color: #a12121; background: #fff0ef; }
+
+.congrats { margin-top: 7px; display: flex; align-items: center; gap: 13px; border-radius: 12px; padding: 17px; background: #fff7ed; color: #8a4b19; }
+
+.congrats strong { font-size: 13px; }
+
+.congrats p { margin: 4px 0 0; color: #966d4b; font-size: 12px; }
+
+.empty-state { text-align: center; background: white; border: 1px dashed #dedce1; border-radius: 15px; padding: 46px 20px; color: #777580; }
+
+.empty-state > svg { color: #a7a4ae; }
+
+.empty-state h3 { color: #28262d; margin: 12px 0 6px; font-size: 16px; }
+
+.empty-state p { font-size: 12px; margin: 0; }
+
+.empty-state.compact { padding: 30px 18px; }
+
+.how-it-works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; margin-top: 35px; }
+
+.how-card { border: 1px solid var(--border); background: white; border-radius: 13px; padding: 21px; }
+
+.how-card > span { color: #c77c7c; font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 800; }
+
+.how-card h3 { font-size: 14px; margin: 13px 0 7px; }
+
+.how-card p { color: var(--muted); font-size: 12px; line-height: 1.6; margin: 0; }
+
+.message { display: flex; align-items: flex-start; gap: 10px; border-radius: 10px; padding: 13px 15px; font-size: 12px; line-height: 1.6; margin-bottom: 15px; }
+
+.message svg { flex-shrink: 0; margin-top: 1px; }
+
+.message.error { color: #a12121; background: #fff0ef; border: 1px solid #f7d6d3; }
+
+.message.success { color: #146c3b; background: #eaf8ef; border: 1px solid #d0efd9; }
+
+.message.info { color: #6a4b10; background: #fff8e5; border: 1px solid #f4e6bd; }
+
+.candidate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+
+.candidate-card { border: 1px solid var(--border); background: white; border-radius: 12px; padding: 17px; }
+
+.candidate-card h3 { margin-bottom: 4px; font-size: 15px; }
+
+.candidate-card > p { font-size: 11px; color: var(--muted); }
+
+.muted { color: var(--muted); font-size: 12px; }
+
+.footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px max(calc((100vw - 1120px)/2), 6%); border-top: 1px solid var(--border); background: white; color: #6f6d77; font-size: 11px; }
+
+.footer > div { display: flex; align-items: center; gap: 13px; }
+
+.footer b { color: var(--red); font-family: 'Manrope', sans-serif; font-size: 12px; }
+
+.footer small { font-size: 10px; }
+
+
+
+.login-wrap { flex: 1; display: grid; place-items: center; padding: 45px 20px; background: #f7f7f8; }
+
+.login-card { width: min(420px, 100%); padding: 32px; background: white; border: 1px solid var(--border); border-radius: 17px; box-shadow: 0 15px 50px #21121a08; }
+
+.login-icon { width: 53px; height: 53px; border-radius: 14px; background: var(--red-light); color: var(--red); display: grid; place-items: center; margin-bottom: 23px; }
+
+.login-card h1 { font-size: 27px; letter-spacing: -.04em; margin: 0 0 7px; }
+
+.login-card > p { font-size: 12px; line-height: 1.6; color: var(--muted); margin-bottom: 25px; }
+
+label { display: block; font-size: 12px; font-weight: 700; margin: 15px 0 7px; }
+
+.login-card input, .form-panel input, .form-panel select, .form-panel textarea {
+
+  width: 100%; border: 1px solid #dfdde3; border-radius: 8px; padding: 11px 12px; color: #28262d; background: white; outline-color: #d78b8b; font-size: 13px;
+
+}
+
+.primary-button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; border: 0; background: var(--red); color: white; border-radius: 8px; padding: 11px 14px; font-size: 12px; font-weight: 700; }
+
+.primary-button.full { width: 100%; margin-top: 22px; padding: 13px; }
+
+.text-button { display: block; border: 0; background: transparent; color: var(--muted); margin: 15px auto 0; font-size: 12px; }
+
+.text-button:hover { color: var(--red); }
+
+
+
+.admin-layout { display: flex; min-height: calc(100vh - 0px); background: #f7f7f9; }
+
+.sidebar { width: 245px; flex-shrink: 0; background: #fff; border-right: 1px solid var(--border); padding: 24px 15px; display: flex; flex-direction: column; }
+
+.sidebar-brand { display: flex; align-items: center; gap: 10px; color: var(--red); padding: 0 9px 29px; }
+
+.sidebar-brand span, .sidebar-brand b, .sidebar-brand small { display: block; }
+
+.sidebar-brand b { color: #29272e; font-size: 13px; }
+
+.sidebar-brand small { color: #8c8993; font-size: 9px; margin-top: 3px; letter-spacing: .12em; }
+
+.sidebar-label { font-size: 9px; font-weight: 800; letter-spacing: .14em; color: #a09da7; padding: 0 11px 11px; }
+
+.side-link { width: 100%; display: flex; align-items: center; gap: 11px; border: 0; background: transparent; color: #6d6b75; text-align: left; border-radius: 9px; padding: 12px 11px; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+
+.side-link:hover { background: #f8f4f4; color: var(--red); }
+
+.side-link.active { background: #fff0ef; color: var(--red); }
+
+.sidebar-bottom { margin-top: auto; border-top: 1px solid var(--border); padding-top: 18px; }
+
+.admin-identity { display: flex; gap: 10px; align-items: center; padding: 0 8px 16px; }
+
+.avatar.small { width: 34px; height: 34px; border-radius: 10px; font-size: 14px; flex-shrink: 0; }
+
+.admin-identity b, .admin-identity small { display: block; }
+
+.admin-identity b { font-size: 11px; }
+
+.admin-identity small { font-size: 9px; color: var(--muted); margin-top: 4px; }
+
+.logout { color: #a12c2c; }
+
+.admin-content { flex: 1; min-width: 0; }
+
+.admin-topbar { display: flex; align-items: center; justify-content: space-between; gap: 15px; background: white; border-bottom: 1px solid var(--border); padding: 20px 30px; }
+
+.admin-topbar .section-kicker { font-size: 9px; margin-bottom: 4px; }
+
+.admin-topbar h2 { font-size: 21px; margin: 0; }
+
+.refresh-button, .secondary-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 13px; border: 1px solid var(--border); background: white; color: #55535d; border-radius: 8px; font-size: 11px; font-weight: 700; }
+
+.refresh-button:hover, .secondary-button:hover { border-color: #cba0a0; color: var(--red); }
+
+.admin-main { padding: 25px 30px 40px; max-width: 1500px; margin: auto; }
+
+.welcome-banner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 26px; border-radius: 13px; color: white; background: linear-gradient(110deg, #771216, #a92329); }
+
+.welcome-banner > div > span { color: #f2c7c7; font-size: 9px; letter-spacing: .14em; font-weight: 800; }
+
+.welcome-banner h1 { font-size: 25px; margin: 10px 0 6px; letter-spacing: -.04em; }
+
+.welcome-banner p { margin: 0; color: #f7dfe0; font-size: 12px; }
+
+.welcome-banner > svg { color: #ffffffbb; flex-shrink: 0; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; margin: 20px 0; }
+
+.stat-card { display: grid; grid-template-columns: 34px 1fr; column-gap: 11px; row-gap: 7px; align-items: center; background: white; border: 1px solid var(--border); padding: 17px; border-radius: 11px; }
+
+.stat-card > svg { grid-row: span 2; color: var(--red); padding: 7px; width: 34px; height: 34px; background: #fff0ef; border-radius: 9px; }
+
+.stat-card span { color: var(--muted); font-size: 10px; }
+
+.stat-card strong { font-size: 23px; letter-spacing: -.04em; }
+
+.panel { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; min-width: 0; }
+
+.panel > h3, .form-panel h3 { display: flex; align-items: center; gap: 9px; font-size: 14px; margin: 0 0 17px; }
+
+.contest-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #f0eff1; }
+
+.contest-row b, .contest-row small { display: block; }
+
+.contest-row b { font-size: 12px; }
+
+.contest-row small { color: var(--muted); font-size: 10px; margin-top: 4px; }
+
+.pill { display: inline-flex; align-items: center; padding: 6px 8px; border-radius: 6px; font-size: 9px; font-weight: 800; white-space: nowrap; background: #f1f0f2; color: #77747f; }
+
+.pill.published, .pill.lolos { background: #e7f7ed; color: #167542; }
+
+.pill.draft, .pill.belum_ditetapkan { background: #fff6df; color: #916514; }
+
+.pill.closed, .pill.tidak_lolos { background: #fff0ef; color: #a12121; }
+
+.two-column { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.5fr); gap: 17px; align-items: start; }
+
+.form-panel h3 { padding-bottom: 14px; border-bottom: 1px solid #f0eff1; }
+
+.form-panel .primary-button { margin-top: 19px; }
+
+.table-wrap { overflow-x: auto; width: 100%; }
+
+table { border-collapse: collapse; width: 100%; font-size: 11px; text-align: left; }
+
+th { color: #8a8791; background: #faf9fb; font-size: 9px; letter-spacing: .05em; text-transform: uppercase; }
+
+td, th { border-bottom: 1px solid #efedf0; padding: 12px 10px; vertical-align: top; }
+
+td b, td small { display: block; }
+
+td small { color: #9996a0; font-size: 9px; margin-top: 4px; }
+
+.small-danger { border: 1px solid #f2cece; color: #a12121; background: #fff8f8; border-radius: 6px; padding: 6px 8px; font-size: 9px; white-space: nowrap; }
+
+.small-danger:hover { background: #ffeded; }
+
+.publish-card { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-top: 1px solid #efedf0; padding: 18px 0; }
+
+.publish-info h3 { font-size: 13px; margin: 0 0 5px; }
+
+.publish-info p { font-size: 10px; color: var(--muted); margin: 0 0 8px; }
+
+.publish-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.mobile-menu-button { display: none; background: white; border: 1px solid var(--border); border-radius: 7px; padding: 7px; color: #555; }
+
+
+
+.spin { animation: spin 1s linear infinite; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+
+@media (max-width: 950px) {
+
+  .hero-emblem { width: 170px; height: 170px; }
+
+  .emblem-ring { width: 72px; height: 72px; }
+
+  .emblem-ring svg { width: 55px; }
+
+  .hero-emblem span { font-size: 7px; }
+
+  .hero-emblem strong { font-size: 12px; }
+
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .two-column { grid-template-columns: 1fr; }
+
+  .sidebar { width: 215px; }
+
+}
+
+@media (max-width: 650px) {
+
+  .topbar { height: 68px; padding: 0 5%; }
+
+  .brand-mark { width: 38px; height: 38px; }
+
+  .brand strong { font-size: 12px; }
+
+  .brand small { font-size: 8px; }
+
+  .topbar nav { gap: 2px; }
+
+  .nav-link { display: none; }
+
+  .nav-admin { padding: 10px; font-size: 11px; }
+
+  .hero { min-height: auto; padding: 40px 6% 37px; }
+
+  .hero-emblem { display: none; }
+
+  .hero h1 { font-size: 39px; }
+
+  .hero-content > p { font-size: 12px; }
+
+  .search-form { gap: 8px; }
+
+  .search-form > svg { width: 18px; margin-left: 5px; }
+
+  .search-form input { font-size: 12px; }
+
+  .search-form button { padding: 12px; font-size: 11px; }
+
+  .public-main { width: 88%; padding: 32px 0 43px; }
+
+  .section-heading { align-items: start; }
+
+  .section-heading h2 { font-size: 21px; }
+
+  .secure-note { font-size: 9px; padding: 7px; }
+
+  .result-card { flex-wrap: wrap; padding: 13px; gap: 10px; }
+
+  .result-icon { width: 37px; height: 37px; }
+
+  .result-body { flex-basis: calc(100% - 50px); }
+
+  .status-badge { margin-left: 47px; }
+
+  .how-it-works { grid-template-columns: 1fr; gap: 10px; margin-top: 24px; }
+
+  .how-card { padding: 16px; }
+
+  .footer { padding: 18px 6%; align-items: start; flex-direction: column; gap: 10px; }
+
+  .footer > div { align-items: start; flex-direction: column; gap: 5px; }
+
+  .login-card { padding: 25px 21px; }
+
+  .admin-layout { display: block; }
+
+  .sidebar { position: fixed; top: 0; bottom: 0; left: -260px; z-index: 20; width: 245px; transition: left .2s ease; box-shadow: 10px 0 30px #0000000b; }
+
+  .sidebar.sidebar-open { left: 0; }
+
+  .mobile-menu-button { display: grid; place-items: center; }
+
+  .admin-topbar { padding: 15px 5%; gap: 10px; }
+
+  .admin-topbar h2 { font-size: 17px; }
+
+  .admin-topbar .section-kicker { font-size: 8px; }
+
+  .refresh-button { padding: 9px; font-size: 0; gap: 0; }
+
+  .refresh-button svg { width: 17px; }
+
+  .admin-main { padding: 17px 4% 30px; }
+
+  .welcome-banner { padding: 20px; }
+
+  .welcome-banner h1 { font-size: 21px; }
+
+  .welcome-banner p { font-size: 10px; line-height: 1.6; }
+
+  .welcome-banner > svg { width: 36px; }
+
+  .stat-grid { gap: 9px; margin: 13px 0; }
+
+  .stat-card { padding: 12px; grid-template-columns: 29px 1fr; gap: 6px; }
+
+  .stat-card > svg { width: 29px; height: 29px; padding: 6px; }
+
+  .stat-card span { font-size: 9px; }
+
+  .stat-card strong { font-size: 20px; }
+
+  .panel { padding: 14px; }
+
+  .publish-card { align-items: start; flex-direction: column; gap: 13px; }
+
+  .publish-actions { width: 100%; }
+
+  .publish-actions button { flex: 1; }
+
+}
+
+
+
+/* ===== Modern announcement cards + WhatsApp next step ===== */
+
+.event-selector { max-width: 590px; margin: 0 0 12px; }
+
+.event-selector label { display: block; margin: 0 0 7px; color: #ffe1e2; font-size: 12px; font-weight: 700; }
+
+.event-selector select { width: 100%; padding: 13px 15px; border: 1px solid #ffffff40; border-radius: 12px; background: #fff; color: #29252b; font-size: 13px; box-shadow: 0 10px 24px #37090d18; }
+
+
+
+.participant-heading { background: linear-gradient(125deg, #fff 0%, #fff8f8 100%); border: 1px solid #f0dfe1; border-radius: 18px; padding: 20px; box-shadow: 0 12px 28px #40131a08; }
+
+.participant-heading .avatar { width: 58px; height: 58px; border-radius: 18px; background: linear-gradient(145deg, #991b1b, #c33c46); color: #fff; box-shadow: 0 8px 18px #991b1b25; }
+
+.participant-heading h3 { font-size: clamp(18px, 2.5vw, 23px); letter-spacing: -.035em; }
+
+.participant-heading p { font-size: 12px; }
+
+.result-count { margin: 8px 0 2px; font-weight: 700; letter-spacing: .01em; }
+
+.result-list { gap: 15px; }
+
+.result-card { position: relative; overflow: hidden; align-items: flex-start; gap: 15px; padding: 20px; border: 1px solid #e9e5e8; border-radius: 18px; box-shadow: 0 7px 22px #20131a07; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+
+.result-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: #b42332; }
+
+.result-card:hover { transform: translateY(-2px); box-shadow: 0 14px 28px #20131a10; border-color: #e2c6ca; }
+
+.result-passed { background: linear-gradient(120deg, #fff 0%, #fbfffc 100%); }
+
+.result-passed::before { background: #16834a; }
+
+.result-failed { background: linear-gradient(120deg, #fff 0%, #fffafa 100%); }
+
+.result-icon { width: 50px; height: 50px; border-radius: 15px; }
+
+.result-passed .result-icon { background: #e2f7e9; color: #16834a; }
+
+.result-failed .result-icon { background: #fff0ef; color: #a12121; }
+
+.result-body h3 { font-size: 15px; line-height: 1.45; letter-spacing: -.015em; margin: 1px 0 7px; }
+
+.result-body p { font-size: 12px; line-height: 1.75; }
+
+.status-badge { margin-left: auto; border-radius: 999px; padding: 8px 11px; letter-spacing: .035em; }
+
+.status-badge.passed { background: #e4f8eb; color: #146c3b; }
+
+.status-badge.failed { background: #fff0ef; color: #a12121; }
+
+.congrats { margin-top: 10px; padding: 20px; border: 1px solid #f2dfc3; border-radius: 17px; background: linear-gradient(120deg, #fff8eb, #fffdf7); box-shadow: 0 8px 20px #7c4a1208; }
+
+.congrats > svg { flex-shrink: 0; }
+
+.congrats strong { font-size: 15px; }
+
+.congrats p { font-size: 12px; line-height: 1.7; }
+
+
+
+/* Optional WhatsApp invitation card: rendered when the React component is added. */
+
+.whatsapp-invite { display: flex; align-items: flex-start; gap: 15px; margin-top: 16px; padding: 20px; border: 1px solid #ccebd8; border-radius: 18px; background: linear-gradient(130deg, #f0fff5 0%, #fff 100%); box-shadow: 0 10px 25px #16834a0d; }
+
+.whatsapp-invite-icon { display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px; border-radius: 15px; background: #d9f8e4; color: #16834a; }
+
+.whatsapp-invite-content { flex: 1; min-width: 0; }
+
+.whatsapp-invite h3 { margin: 0 0 7px; color: #176534; font-size: 15px; }
+
+.whatsapp-invite p { margin: 0 0 14px; color: #4e6d59; font-size: 12px; line-height: 1.75; }
+
+.whatsapp-join-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 43px; padding: 12px 17px; border: 0; border-radius: 11px; background: #16834a; color: #fff; text-decoration: none; font-size: 12px; font-weight: 800; box-shadow: 0 7px 15px #16834a25; transition: *background* .18s ease, transform .18s ease; }
+
+.whatsapp-join-button:hover { background: #116b3b; color: #fff; transform: translateY(-1px); }
+
+.whatsapp-join-button:focus-visible { outline: 3px solid #8de0ae; outline-offset: 3px; }
+
+.whatsapp-invite-note { display: block; margin-top: 9px; color: #66816f; font-size: 10px; }
+
+
+
+@media (max-width: 650px) {
+
+  .event-selector select { padding: 12px; font-size: 12px; }
+
+  .participant-heading { padding: 15px; gap: 12px; border-radius: 15px; }
+
+  .participant-heading .avatar { width: 48px; height: 48px; border-radius: 14px; font-size: 18px; }
+
+  .result-card { padding: 15px; gap: 11px; border-radius: 15px; }
+
+  .result-icon { width: 40px; height: 40px; border-radius: 12px; }
+
+  .result-body { flex-basis: calc(100% - 53px); }
+
+  .status-badge { margin-left: 51px; }
+
+  .whatsapp-invite { padding: 15px; gap: 11px; }
+
+  .whatsapp-invite-icon { flex-basis: 40px; width: 40px; height: 40px; border-radius: 12px; }
+
+  .whatsapp-join-button { width: 100%; }
+
+}
+
+
+
+/* ===== Final polish: announcement experience ===== */
+
+:root {
+
+  --red: #b91c24;
+
+  --red-dark: #86151b;
+
+  --red-light: #fff0f1;
+
+  --green: #07864b;
+
+}
+
+
+
+.public-main {
+
+  width: min(1280px, 92%);
+
+  padding-top: 48px;
+
+  padding-bottom: 72px;
+
+}
+
+
+
+.section-heading { margin-bottom: 28px; }
+
+.section-heading h2 { font-size: clamp(25px, 3vw, 32px); }
+
+.results-area { gap: 22px; }
+
+
+
+.participant-heading {
+
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 126px;
+
+  padding: 24px 26px;
+
+  border-radius: 22px;
+
+  background: linear-gradient(112deg, #fff 0%, #fffafa 70%, #fff3f3 100%);
+
+  box-shadow: 0 14px 38px rgba(63, 19, 24, .055);
+
+}
+
+.participant-heading::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 210px;
+
+  height: 210px;
+
+  right: -95px;
+
+  top: -105px;
+
+  border: 1px solid rgba(185, 28, 36, .08);
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 0 18px rgba(185, 28, 36, .025), 0 0 0 38px rgba(185, 28, 36, .02);
+
+  pointer-events: none;
+
+}
+
+.participant-heading .avatar {
+
+  position: relative;
+
+  z-index: 1;
+
+  width: 72px;
+
+  height: 72px;
+
+  flex: 0 0 72px;
+
+  border-radius: 22px;
+
+  font-size: 25px;
+
+  background: linear-gradient(145deg, #a81820, #d23a46);
+
+  box-shadow: 0 12px 24px rgba(153, 27, 27, .19);
+
+}
+
+.participant-heading > div:last-child { position: relative; z-index: 1; }
+
+.participant-heading h3 { font-size: clamp(21px, 2.5vw, 28px); margin-bottom: 5px; }
+
+.participant-heading p { font-size: 13px; }
+
+.result-count { margin: 12px 0 1px; font-size: 13px; }
+
+.result-list { gap: 17px; }
+
+
+
+.result-card {
+
+  align-items: center;
+
+  min-height: 116px;
+
+  padding: 22px 25px;
+
+  border-radius: 22px;
+
+  box-shadow: 0 10px 26px rgba(26, 30, 40, .045);
+
+}
+
+.result-card::before { width: 5px; }
+
+.result-icon { width: 62px; height: 62px; flex: 0 0 62px; border-radius: 19px; }
+
+.result-icon svg { width: 29px; height: 29px; }
+
+.result-body h3 { font-size: 18px; margin-bottom: 7px; }
+
+.result-body p { font-size: 14px; line-height: 1.65; }
+
+.status-badge { font-size: 12px; padding: 11px 15px; }
+
+.status-badge svg { width: 17px; height: 17px; }
+
+
+
+.whatsapp-invite {
+
+  position: relative;
+
+  overflow: hidden;
+
+  align-items: center;
+
+  gap: 22px;
+
+  margin-top: 0;
+
+  padding: 26px 28px;
+
+  min-height: 124px;
+
+  border: 1px solid #bcebd0;
+
+  border-radius: 23px;
+
+  background:
+
+    radial-gradient(circle at 2% 50%, rgba(22, 163, 74, .08), transparent 25%),
+
+    linear-gradient(115deg, #f0fff5 0%, #fbfffc 52%, #effcf4 100%);
+
+  box-shadow: 0 14px 34px rgba(22, 131, 74, .07);
+
+}
+
+.whatsapp-invite::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 190px;
+
+  height: 190px;
+
+  right: -95px;
+
+  bottom: -125px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(22, 131, 74, .1);
+
+  box-shadow: 0 0 0 17px rgba(22, 131, 74, .025), 0 0 0 35px rgba(22, 131, 74, .02);
+
+  pointer-events: none;
+
+}
+
+.whatsapp-invite-icon {
+
+  position: relative;
+
+  z-index: 1;
+
+  width: 76px;
+
+  height: 76px;
+
+  flex: 0 0 76px;
+
+  border-radius: 23px;
+
+  background: linear-gradient(145deg, #d9fbe5, #c2f3d4);
+
+  color: #07864b;
+
+}
+
+.whatsapp-invite-icon svg { width: 39px; height: 39px; }
+
+.whatsapp-invite-content { position: relative; z-index: 1; }
+
+.whatsapp-invite-content strong {
+
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #102b20;
+
+  font-family: 'Manrope', sans-serif;
+
+  font-size: clamp(17px, 2vw, 23px);
+
+  line-height: 1.35;
+
+  letter-spacing: -.025em;
+
+}
+
+.whatsapp-invite p {
+
+  max-width: 520px;
+
+  margin: 0;
+
+  color: #4c6658;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+}
+
+.whatsapp-join-button {
+
+  position: relative;
+
+  z-index: 1;
+
+  flex: 0 0 auto;
+
+  min-height: 56px;
+
+  padding: 16px 24px;
+
+  border-radius: 15px;
+
+  background: linear-gradient(135deg, #159653, #08753e);
+
+  font-size: 14px;
+
+  box-shadow: 0 10px 22px rgba(8, 117, 62, .22);
+
+  white-space: nowrap;
+
+}
+
+.whatsapp-join-button svg { width: 21px; height: 21px; }
+
+.whatsapp-join-button:hover { background: linear-gradient(135deg, #087e42, #056331); transform: translateY(-2px); box-shadow: 0 14px 26px rgba(8, 117, 62, .25); }
+
+
+
+.congrats {
+
+  min-height: 100px;
+
+  padding: 23px 26px;
+
+  border-radius: 22px;
+
+  background: linear-gradient(115deg, #fff8eb, #fffdf7 75%, #fff9ec);
+
+  box-shadow: 0 10px 26px rgba(124, 74, 18, .045);
+
+}
+
+.congrats > svg { width: 30px; height: 30px; }
+
+.congrats strong { font-size: 17px; }
+
+.congrats p { font-size: 13px; line-height: 1.7; }
+
+
+
+/* Admin screens retain their existing structure and styling. */
+
+@media (max-width: 850px) {
+
+  .public-main { width: min(100% - 36px, 720px); padding-top: 32px; }
+
+  .whatsapp-invite { gap: 16px; padding: 21px; flex-wrap: wrap; }
+
+  .whatsapp-invite-content { flex: 1 1 calc(100% - 100px); }
+
+  .whatsapp-join-button { margin-left: 92px; }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+  .public-main { width: calc(100% - 28px); padding: 27px 0 42px; }
+
+  .section-heading { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  .section-heading h2 { font-size: 24px; }
+
+  .participant-heading { min-height: 0; padding: 18px; gap: 13px; border-radius: 18px; }
+
+  .participant-heading .avatar { width: 54px; height: 54px; flex-basis: 54px; border-radius: 16px; font-size: 20px; }
+
+  .participant-heading h3 { font-size: 19px; overflow-wrap: anywhere; }
+
+  .participant-heading p { font-size: 11px; line-height: 1.5; }
+
+  .result-card { min-height: 0; padding: 16px; gap: 11px; border-radius: 17px; }
+
+  .result-icon { width: 43px; height: 43px; flex-basis: 43px; border-radius: 13px; }
+
+  .result-icon svg { width: 23px; height: 23px; }
+
+  .result-body { flex: 1 1 calc(100% - 55px); }
+
+  .result-body h3 { font-size: 14px; }
+
+  .result-body p { font-size: 12px; }
+
+  .status-badge { margin-left: 54px; font-size: 10px; padding: 8px 10px; }
+
+  .whatsapp-invite { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 13px; padding: 17px; border-radius: 18px; }
+
+  .whatsapp-invite-icon { width: 48px; height: 48px; flex-basis: 48px; border-radius: 14px; }
+
+  .whatsapp-invite-icon svg { width: 27px; height: 27px; }
+
+  .whatsapp-invite-content { min-width: 0; }
+
+  .whatsapp-invite-content strong { font-size: 16px; margin-bottom: 5px; }
+
+  .whatsapp-invite p { font-size: 12px; line-height: 1.6; }
+
+  .whatsapp-join-button { grid-column: 1 / -1; width: 100%; min-height: 48px; margin: 0; padding: 13px 16px; font-size: 12px; }
+
+  .congrats { padding: 17px; border-radius: 18px; gap: 12px; }
+
+  .congrats strong { font-size: 14px; }
+
+  .congrats p { font-size: 12px; }
+
+}
+
+
+
+/* =====================================================
+
+   PENGUMUMAN PUBLIK: SATU KARTU TERPADU
+
+   Menggabungkan identitas peserta, hasil lomba,
+
+   undangan WhatsApp, dan motivasi dalam satu panel.
+
+   ===================================================== */
+
+.public-main .results-area {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0;
+
+  padding: clamp(18px, 3vw, 34px);
+
+  background: linear-gradient(145deg, #ffffff 0%, #fffdfd 72%, #f4fff8 100%);
+
+  border: 1px solid #eadfe1;
+
+  border-radius: 24px;
+
+  box-shadow: 0 18px 55px rgba(48, 24, 30, 0.07);
+
+  overflow: hidden;
+
+  position: relative;
+
+}
+
+
+
+.public-main .results-area::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0 auto 0 0;
+
+  width: 5px;
+
+  background: linear-gradient(180deg, #a91f27 0%, #d64a4f 42%, #16834a 100%);
+
+}
+
+
+
+.public-main .results-area > \* {
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+
+.public-main .participant-heading {
+
+  gap: 18px;
+
+  margin: 0;
+
+  padding: 0 0 24px;
+
+  border-bottom: 1px solid #f0e6e7;
+
+}
+
+
+
+.public-main .participant-heading .avatar {
+
+  width: 66px;
+
+  height: 66px;
+
+  border-radius: 19px;
+
+  color: #fff;
+
+  background: linear-gradient(145deg, #a91f27, #c63843);
+
+  box-shadow: 0 10px 22px rgba(153, 27, 27, 0.17);
+
+  font-size: 25px;
+
+}
+
+
+
+.public-main .participant-heading h3 {
+
+  font-size: clamp(20px, 2.4vw, 27px);
+
+  letter-spacing: -.04em;
+
+  margin-bottom: 5px;
+
+}
+
+
+
+.public-main .participant-heading p {
+
+  font-size: 13px;
+
+}
+
+
+
+.public-main .result-count {
+
+  margin: 21px 0 12px;
+
+  color: #777680;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+}
+
+
+
+.public-main .result-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0;
+
+  border-bottom: 1px solid #f0e6e7;
+
+}
+
+
+
+.public-main .result-card {
+
+  gap: 16px;
+
+  padding: 19px 0;
+
+  border: 0;
+
+  border-radius: 0;
+
+  border-bottom: 1px solid #f2edef;
+
+  background: transparent;
+
+  box-shadow: none;
+
+}
+
+
+
+.public-main .result-card:last-child {
+
+  border-bottom: 0;
+
+}
+
+
+
+.public-main .result-icon {
+
+  width: 54px;
+
+  height: 54px;
+
+  border-radius: 16px;
+
+}
+
+
+
+.public-main .result-body h3 {
+
+  font-size: 16px;
+
+  margin-bottom: 6px;
+
+}
+
+
+
+.public-main .result-body p {
+
+  font-size: 13px;
+
+}
+
+
+
+.public-main .status-badge {
+
+  border-radius: 999px;
+
+  padding: 9px 13px;
+
+  font-size: 10px;
+
+}
+
+
+
+/* WhatsApp tetap berada di dalam kartu utama */
+
+.public-main .whatsapp-invite {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 20px;
+
+  padding: 18px;
+
+  border: 1px solid #c8efd7;
+
+  border-radius: 17px;
+
+  background: linear-gradient(110deg, #effdf4, #f8fffb);
+
+  color: #145c37;
+
+  box-shadow: none;
+
+}
+
+
+
+.public-main .whatsapp-invite-icon {
+
+  display: grid;
+
+  place-items: center;
+
+  flex: 0 0 52px;
+
+  width: 52px;
+
+  height: 52px;
+
+  border-radius: 15px;
+
+  background: #d8f7e4;
+
+  color: #13834a;
+
+}
+
+
+
+.public-main .whatsapp-invite-content {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+
+.public-main .whatsapp-invite-content strong {
+
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #145c37;
+
+  font-size: 15px;
+
+}
+
+
+
+.public-main .whatsapp-invite-content p {
+
+  margin: 0;
+
+  color: #527565;
+
+  font-size: 12px;
+
+  line-height: 1.65;
+
+}
+
+
+
+.public-main .whatsapp-join-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  flex-shrink: 0;
+
+  padding: 14px 18px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #169653, #087b40);
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  box-shadow: 0 8px 20px rgba(22, 131, 74, .17);
+
+  transition: transform .2s ease, box-shadow .2s ease;
+
+}
+
+
+
+.public-main .whatsapp-join-button:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 24px rgba(22, 131, 74, .23);
+
+}
+
+
+
+/* Pesan motivasi menjadi bagian bawah kartu utama */
+
+.public-main .congrats {
+
+  margin-top: 17px;
+
+  padding: 15px 17px;
+
+  border: 1px solid #f4dfb9;
+
+  border-radius: 15px;
+
+  background: linear-gradient(110deg, #fff9eb, #fffdf7);
+
+  color: #8a4b19;
+
+}
+
+
+
+.public-main .congrats strong {
+
+  font-size: 13px;
+
+}
+
+
+
+.public-main .congrats p {
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+}
+
+
+
+@media (max-width: 650px) {
+
+  .public-main .results-area {
+
+    padding: 18px 15px 16px 19px;
+
+    border-radius: 19px;
+
+  }
+
+
+
+  .public-main .participant-heading {
+
+    gap: 12px;
+
+    padding-bottom: 18px;
+
+  }
+
+
+
+  .public-main .participant-heading .avatar {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 15px;
+
+    font-size: 20px;
+
+  }
+
+
+
+  .public-main .participant-heading h3 {
+
+    font-size: 18px;
+
+  }
+
+
+
+  .public-main .participant-heading p {
+
+    font-size: 11px;
+
+  }
+
+
+
+  .public-main .result-card {
+
+    display: grid;
+
+    grid-template-columns: 42px minmax(0, 1fr);
+
+    gap: 10px;
+
+    padding: 16px 0;
+
+  }
+
+
+
+  .public-main .result-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+  }
+
+
+
+  .public-main .result-body {
+
+    flex-basis: auto;
+
+  }
+
+
+
+  .public-main .result-body h3 {
+
+    font-size: 14px;
+
+  }
+
+
+
+  .public-main .result-body p {
+
+    font-size: 11px;
+
+  }
+
+
+
+  .public-main .status-badge {
+
+    grid-column: 2;
+
+    margin-left: 0;
+
+    justify-self: start;
+
+    padding: 7px 10px;
+
+  }
+
+
+
+  .public-main .whatsapp-invite {
+
+    display: grid;
+
+    grid-template-columns: 44px minmax(0, 1fr);
+
+    gap: 11px;
+
+    padding: 13px;
+
+    margin-top: 15px;
+
+  }
+
+
+
+  .public-main .whatsapp-invite-icon {
+
+    width: 44px;
+
+    height: 44px;
+
+    flex-basis: 44px;
+
+    border-radius: 12px;
+
+  }
+
+
+
+  .public-main .whatsapp-invite-content strong {
+
+    font-size: 13px;
+
+  }
+
+
+
+  .public-main .whatsapp-invite-content p {
+
+    font-size: 11px;
+
+  }
+
+
+
+  .public-main .whatsapp-join-button {
+
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    font-size: 12px;
+
+  }
+
+
+
+  .public-main .congrats {
+
+    margin-top: 13px;
+
+    padding: 13px;
+
+  }
+
+}
+
+
+
+
+
+/* =========================================
+
+   FIX LOGO DAN LAYOUT ADMIN PMR SMANEL
+
+\========================================= */
+
+
+
+/* Pastikan logo dekoratif tidak bocor ke area admin */
+
+.admin-layout {
+
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: clip;
+
+  background: #f7f7f9;
+
+}
+
+
+
+.admin-content {
+
+  position: relative;
+
+  z-index: 1;
+
+  min-width: 0;
+
+  background: #f7f7f9;
+
+}
+
+
+
+/* Sidebar berada di lapisan terpisah */
+
+.sidebar {
+
+  position: relative;
+
+  z-index: 5;
+
+  flex-shrink: 0;
+
+  background: #ffffff;
+
+  overflow: hidden;
+
+}
+
+
+
+/* Identitas logo di sidebar */
+
+.sidebar-brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 22px 20px;
+
+  min-height: 82px;
+
+  background: #ffffff;
+
+}
+
+
+
+.sidebar-brand img {
+
+  display: block;
+
+  width: 42px;
+
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  border-radius: 8px;
+
+}
+
+
+
+/* Hilangkan logo dekoratif berukuran besar di area admin */
+
+.admin-layout .admin-content::before,
+
+.admin-layout .admin-content::after,
+
+.admin-layout .admin-main::before,
+
+.admin-layout .admin-main::after {
+
+  content: none !important;
+
+  display: none !important;
+
+}
+
+
+
+/* Jarak konten Dashboard */
+
+.admin-main {
+
+  position: relative;
+
+  z-index: 1;
+
+  padding: 24px 28px;
+
+}
+
+
+
+/* Banner dan statistik tetap di atas latar */
+
+.welcome-banner,
+
+.stat-grid,
+
+.stat-card,
+
+.panel,
+
+.publish-card {
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+
+/* Pastikan layar kecil tetap nyaman */
+
+@media (max-width: 768px) {
+
+  .admin-main {
+
+    padding: 16px;
+
+  }
+
+
+
+  .sidebar-brand {
+
+    padding: 18px 16px;
+
+  }
+
+}
+
+
+
+
+
+/* ========================================
+
+   BERANDA PMR SMANEL — HEADER & HERO FIX
+
+   Tidak mengubah layout admin
+
+\======================================== */
+
+
+
+/* Header beranda */
+
+.topbar {
+
+  width: 100%;
+
+  height: 82px;
+
+  min-height: 82px;
+
+  padding: 0 clamp(20px, 5.5vw, 90px);
+
+  gap: 24px;
+
+  flex-shrink: 0;
+
+  position: relative;
+
+  z-index: 20;
+
+  overflow: visible;
+
+}
+
+
+
+.brand {
+
+  flex-shrink: 0;
+
+  min-width: 0;
+
+  gap: 12px;
+
+}
+
+
+
+.brand-mark {
+
+  width: 46px;
+
+  height: 46px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+}
+
+
+
+.brand strong {
+
+  font-size: 16px;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+
+}
+
+
+
+.brand small {
+
+  margin-top: 3px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  letter-spacing: 1.4px;
+
+  white-space: nowrap;
+
+}
+
+
+
+.topbar nav {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.nav-link,
+
+.nav-admin {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 0 16px;
+
+  border-radius: 12px;
+
+  white-space: nowrap;
+
+}
+
+
+
+/* Hero beranda */
+
+.hero {
+
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  width: 100%;
+
+  min-height: 570px;
+
+  padding: 76px clamp(24px, 7vw, 120px);
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+
+  align-items: center;
+
+  gap: clamp(32px, 6vw, 90px);
+
+  background: linear-gradient(120deg, #741313 0%, #991b1b 55%, #b32932 100%);
+
+  color: #fff;
+
+}
+
+
+
+/* Konten hero berada di atas dekorasi */
+
+.hero-content,
+
+.hero-emblem {
+
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 0;
+
+}
+
+
+
+.hero-content {
+
+  width: 100%;
+
+  max-width: 680px;
+
+}
+
+
+
+.hero h1 {
+
+  max-width: 650px;
+
+  font-size: clamp(38px, 5vw, 68px);
+
+  line-height: 1.1;
+
+  letter-spacing: -2.5px;
+
+  margin: 24px 0;
+
+}
+
+
+
+.hero-content > p {
+
+  max-width: 610px;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  color: #fff0ef;
+
+}
+
+
+
+.hero .eyebrow {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+
+}
+
+
+
+.hero .event-selector {
+
+  max-width: 560px;
+
+}
+
+
+
+.hero .event-selector select {
+
+  width: 100%;
+
+  min-height: 54px;
+
+  border-radius: 12px;
+
+}
+
+
+
+.hero .search-form {
+
+  max-width: 650px;
+
+  min-height: 68px;
+
+  border-radius: 15px;
+
+}
+
+
+
+/* Emblem hero: batasi ukuran agar tidak menutupi konten */
+
+.hero-emblem {
+
+  width: min(100%, 320px);
+
+  min-height: 320px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  text-align: center;
+
+  border: 1px solid rgb(255 255 255 / 30%);
+
+  border-radius: 50%;
+
+  aspect-ratio: 1;
+
+  background: rgb(255 255 255 / 4%);
+
+}
+
+
+
+.hero-emblem .emblem-ring {
+
+  width: 130px;
+
+  height: 130px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid rgb(255 255 255 / 45%);
+
+  border-radius: 50%;
+
+  color: #ffe0d7;
+
+}
+
+
+
+.hero-emblem > span,
+
+.hero-emblem > small {
+
+  font-size: 10px;
+
+  letter-spacing: 1.5px;
+
+}
+
+
+
+.hero-emblem > strong {
+
+  font-size: 18px;
+
+}
+
+
+
+/* Cegah gambar logo dekoratif membesar di Beranda */
+
+.hero > img,
+
+.hero-emblem img {
+
+  display: block;
+
+  max-width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+
+}
+
+
+
+/* Responsif tablet dan ponsel */
+
+@media (max-width: 900px) {
+
+  .topbar {
+
+    padding: 0 24px;
+
+  }
+
+
+
+  .hero {
+
+    grid-template-columns: minmax(0, 1fr) 230px;
+
+    padding: 56px 28px;
+
+    gap: 24px;
+
+  }
+
+
+
+  .hero-emblem {
+
+    width: 230px;
+
+    min-height: 230px;
+
+  }
+
+
+
+  .hero-emblem .emblem-ring {
+
+    width: 95px;
+
+    height: 95px;
+
+  }
+
+}
+
+
+
+@media (max-width: 650px) {
+
+  .topbar {
+
+    height: auto;
+
+    min-height: 72px;
+
+    padding: 14px 18px;
+
+    gap: 12px;
+
+  }
+
+
+
+  .brand-mark {
+
+    width: 40px;
+
+    height: 40px;
+
+  }
+
+
+
+  .brand strong {
+
+    font-size: 14px;
+
+  }
+
+
+
+  .brand small {
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+  }
+
+
+
+  .topbar nav {
+
+    gap: 6px;
+
+  }
+
+
+
+  .nav-link,
+
+  .nav-admin {
+
+    min-height: 38px;
+
+    padding: 0 10px;
+
+    font-size: 12px;
+
+  }
+
+
+
+  .hero {
+
+    grid-template-columns: minmax(0, 1fr);
+
+    padding: 44px 20px;
+
+    gap: 30px;
+
+  }
+
+
+
+  .hero h1 {
+
+    font-size: clamp(36px, 10vw, 48px);
+
+    letter-spacing: -1.5px;
+
+  }
+
+
+
+  .hero-content > p {
+
+    font-size: 14px;
+
+  }
+
+
+
+  .hero-emblem {
+
+    width: 190px;
+
+    min-height: 190px;
+
+  }
+
+
+
+  .hero-emblem .emblem-ring {
+
+    width: 76px;
+
+    height: 76px;
+
+  }
+
+
+
+  .hero-emblem .emblem-ring svg {
+
+    width: 48px;
+
+    height: 48px;
+
+  }
+
+}
+
+
+
+@media (max-width: 390px) {
+
+  .topbar {
+
+    padding-inline: 12px;
+
+  }
+
+
+
+  .brand {
+
+    gap: 8px;
+
+  }
+
+
+
+  .brand small {
+
+    letter-spacing: 0.5px;
+
+  }
+
+
+
+  .nav-link,
+
+  .nav-admin {
+
+    padding-inline: 8px;
+
+    font-size: 11px;
+
+  }
+
+}
+
+
+
+
+
+/* FIX LOGO HEADER BERANDA */
+
+.topbar .brand-mark {
+
+  width: 48px;
+
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  padding: 4px;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  border: 1px solid #f0e2e2;
+
+  border-radius: 12px;
+
+}
+
+
+
+.topbar .brand-mark img {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+}
+
+
+
+/* Pastikan logo tidak menjadi gambar latar raksasa */
+
+.hero {
+
+  background-image: linear-gradient(
+
+    120deg,
+
+    #741313 0%,
+
+    #991b1b 55%,
+
+    #b32932 100%
+
+  ) !important;
+
+}
+
+
+
+.hero > img {
+
+  display: none;
+
+}
+
+
+
+/* Pastikan judul berada di atas dekorasi */
+
+.hero-content {
+
+  position: relative;
+
+  z-index: 3;
+
+}
+
+
+
+.hero-emblem {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+
+/* Header desktop */
+
+.topbar {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  width: 100%;
+
+}
+
+
+
+.topbar .brand {
+
+  flex-shrink: 0;
+
+}
+
+
+
+.topbar nav {
+
+  flex-shrink: 0;
+
+}
+
+
+
+/* Header ponsel */
+
+@media (max-width: 650px) {
+
+  .topbar .brand-mark {
+
+    width: 40px;
+
+    height: 40px;
+
+    flex-basis: 40px;
+
+  }
+
+}
+
+
+/* =====================================================
+   PERBAIKAN FINAL BERANDA: LOGO TIDAK MENUTUPI JUDUL
+   ===================================================== */
+
+/* Logo organisasi hanya berukuran kecil di area identitas header. */
+.topbar .brand-mark {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #f0e2e2;
+  border-radius: 12px;
+}
+
+.topbar .brand-mark img {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain;
+  transform: none !important;
+}
+
+/* Jika logo disisipkan sebagai gambar langsung di dalam hero, sembunyikan.
+   Emblem medali berbasis SVG tetap tampil seperti desain semula. */
+.hero > img,
+.hero > picture,
+.hero > picture img,
+.hero .hero-logo,
+.hero .pmr-logo,
+.hero img:not(.emblem-ring img) {
+  display: none !important;
+}
+
+/* Hero menggunakan latar gradasi, bukan gambar logo. */
+.hero {
+  background-color: #991b1b;
+  background-image: linear-gradient(120deg, #741313 0%, #991b1b 55%, #b32932 100%) !important;
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+.hero-emblem {
+  position: relative;
+  z-index: 2;
+}
+
+/* Pastikan header tetap satu baris dan tidak mendorong logo ke tengah. */
+.topbar .brand,
+.topbar nav {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+@media (max-width: 650px) {
+  .topbar .brand-mark {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    flex-basis: 40px;
+  }
+}
+
+/* Perbaikan jarak garis hijau dan ikon hasil seleksi */
+.result-card {
+  padding-left: 20px;
+  border-left-width: 4px;
+  border-left-style: solid;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.result-card .result-icon {
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+/* Beri jarak yang nyaman pada layar ponsel */
+@media (max-width: 650px) {
+  .result-card {
+    padding-left: 14px;
+  }
+}
+
+
+/* =========================================
+   BERANDA: HERO TERPUSAT, TANPA EMBLEM KANAN
+========================================= */
+
+.app-shell > .hero {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 620px;
+  padding: 72px 24px;
+  background-image: linear-gradient(
+    120deg,
+    #741313 0%,
+    #991b1b 55%,
+    #b32932 100%
+  ) !important;
+}
+
+/* Hilangkan emblem dekoratif sebelah kanan */
+.app-shell > .hero > .hero-emblem {
+  display: none !important;
+}
+
+/* Pusatkan konten utama */
+.app-shell > .hero > .hero-content {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Judul */
+.app-shell > .hero .hero-content h1 {
+  max-width: 780px;
+  margin: 22px auto;
+  font-size: clamp(42px, 5.5vw, 68px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+/* Deskripsi */
+.app-shell > .hero .hero-content > p {
+  max-width: 680px;
+  margin: 0 auto 28px;
+  line-height: 1.8;
+}
+
+/* Label pengumuman */
+.app-shell > .hero .eyebrow {
+  justify-content: center;
+}
+
+/* Form pencarian tetap terbaca dan terpusat */
+.app-shell > .hero .event-selector,
+.app-shell > .hero .search-form {
+  width: 100%;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.app-shell > .hero .event-selector select {
+  width: 100%;
+}
+
+.app-shell > .hero .search-form {
+  margin-top: 16px;
+}
+
+/* Petunjuk pencarian */
+.app-shell > .hero .hero-content .search-hint {
+  width: 100%;
+  max-width: 650px;
+  text-align: left;
+}
+
+/* Responsif */
+@media (max-width: 650px) {
+  .app-shell > .hero {
+    min-height: auto;
+    padding: 52px 20px;
+  }
+
+  .app-shell > .hero .hero-content h1 {
+    font-size: clamp(36px, 9vw, 48px);
+    letter-spacing: -1.2px;
+  }
+}
+
+/* =========================================
+   HASIL SELEKSI: JARAK GARIS DAN IKON
+========================================= */
+
+.result-card {
+  border-left: 0 !important;
+  position: relative;
+  padding-left: 24px !important;
+  overflow: hidden;
+  border-radius: 18px !important;
+}
+
+/* Buat garis sebagai elemen terpisah */
+.result-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #16834a;
+  border-radius: 18px 0 0 18px;
+}
+
+/* Tambahkan jarak antara garis dan ikon */
+.result-card .result-icon {
+  margin-left: 4px !important;
+  flex-shrink: 0;
+}
+
+@media (max-width: 650px) {
+  .result-card {
+    padding-left: 16px !important;
+  }
+
+  .result-card .result-icon {
+    margin-left: 3px !important;
+  }
+}
+
+/* Samakan ukuran dropdown Event dan kolom pencarian */
+.app-shell > .hero .event-selector,
+.app-shell > .hero .search-form {
+  width: 100% !important;
+  max-width: 814px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Dropdown Event memenuhi lebar container */
+.app-shell > .hero .event-selector select {
+  display: block;
+  width: 100% !important;
+  min-height: 70px;
+}
+
+/* Kolom pencarian memiliki tinggi yang serasi */
+.app-shell > .hero .search-form {
+  min-height: 86px;
+}
+
+/* Pastikan input mengisi ruang yang tersedia */
+.app-shell > .hero .search-form input {
+  min-width: 0;
+  flex: 1;
+}
+
+/* Responsif untuk ponsel */
+@media (max-width: 650px) {
+  .app-shell > .hero .event-selector,
+  .app-shell > .hero .search-form {
+    max-width: 100% !important;
+  }
+
+  .app-shell > .hero .event-selector select {
+    min-height: 58px;
+  }
+
+  .app-shell > .hero .search-form {
+    min-height: 68px;
+  }
+}
+
+/* Perbaikan jarak avatar pada kartu identitas peserta */
+.participant-heading {
+  display: flex;
+  align-items: center;
+  gap: 22px !important;
+}
+
+.participant-heading .avatar {
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
+  margin-right: 0;
+  border-radius: 20px;
+}
+
+.participant-heading > div:last-child {
+  min-width: 0;
+  padding-left: 2px;
+}
+
+@media (max-width: 650px) {
+  .participant-heading {
+    gap: 16px !important;
+  }
+
+  .participant-heading .avatar {
+    flex-basis: 58px;
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+  }
+}
+
+/* =========================================
+   MOBILE FIX — RAPATKAN JARAK HALAMAN ADMIN
+========================================= */
+
+@media (max-width: 768px) {
+  /* Hilangkan ruang kosong berlebihan di atas halaman */
+  .admin-layout {
+    min-height: 100dvh;
+    height: auto;
+    overflow: visible;
+  }
+
+  .admin-content {
+    min-width: 0;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Header dashboard */
+  .admin-header,
+  .admin-topbar,
+  .mobile-header {
+    min-height: 76px;
+    height: auto;
+    margin-top: 0 !important;
+    padding: 12px 16px;
+  }
+
+  /* Area utama */
+  .admin-main {
+    padding: 16px !important;
+    margin-top: 0 !important;
+  }
+
+  /* Banner selamat bekerja */
+  .welcome-banner {
+    margin-top: 4px !important;
+    margin-bottom: 16px !important;
+    padding: 24px !important;
+    min-height: auto !important;
+  }
+
+  /* Kartu statistik lebih rapat */
+  .stat-grid {
+    gap: 12px !important;
+    margin-top: 12px !important;
+  }
+
+  .stat-card {
+    min-width: 0;
+    padding: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-main {
+    padding: 12px !important;
+  }
+
+  .welcome-banner {
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .welcome-banner h1,
+  .welcome-banner h2 {
+    font-size: 23px !important;
+    line-height: 1.3;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+}
+
+
+/* =========================================
+   FIX JARAK KOSONG DI ATAS DASHBOARD MOBILE
+========================================= */
+
+@media screen and (max-width: 650px) {
+  /* Pastikan layout admin dimulai dari bagian atas */
+  .admin-layout {
+    display: block !important;
+    position: relative;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Jangan biarkan konten admin terdorong ke bawah */
+  .admin-content {
+    display: block !important;
+    position: relative;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    transform: none !important;
+  }
+
+  /* Header Dashboard */
+  .admin-topbar {
+    position: relative;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 12px 16px !important;
+    min-height: 76px;
+  }
+
+  /* Konten Dashboard */
+  .admin-main {
+    margin: 0 auto !important;
+    padding: 14px 12px 24px !important;
+  }
+
+  /* Banner selamat bekerja */
+  .welcome-banner {
+    margin-top: 4px !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Statistik */
+  .stat-grid {
+    margin-top: 12px !important;
+  }
+
+  /* Sidebar tetap menjadi menu geser */
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -260px;
+    height: 100dvh;
+    z-index: 1000;
+  }
+
+  .sidebar.sidebar-open {
+    left: 0 !important;
+  }
+}
+
+
+/* =========================================
+   FILTER EVENT ADMIN — MODERN RESPONSIVE
+========================================= */
+
+.publication-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 22px 0 18px;
+  padding: 16px;
+  background: #faf8f8;
+  border: 1px solid #eee3e3;
+  border-radius: 14px;
+}
+
+.publication-filter label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #3d3030;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.publication-filter label::before {
+  content: "EVENT";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 7px;
+  color: #991b1b;
+  background: #fff0ef;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+
+.publication-filter select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 12px 42px 12px 14px;
+  color: #29252b;
+  background-color: #fff;
+  border: 1px solid #e4d9d9;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23991b1b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.publication-filter select:hover {
+  border-color: #c98282;
+}
+
+.publication-filter select:focus {
+  border-color: #991b1b;
+  box-shadow: 0 0 0 3px rgba(153, 27, 27, 0.1);
+}
+
+/* Tampilan HP */
+@media (max-width: 650px) {
+  .publication-filter {
+    gap: 10px;
+    margin: 18px 0 16px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .publication-filter select {
+    min-height: 48px;
+    font-size: 14px;
+  }
+}
+
+
+/* Logo PMR SMANEL di Beranda */
+.app-shell > .hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.app-shell > .hero > .hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+.hero-pmr-logo {
+  display: block;
+  width: 180px;
+  height: 100px;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto 18px;
+}
+
+.app-shell > .hero .event-selector,
+.app-shell > .hero .search-form {
+  width: 100%;
+  max-width: 650px;
+}
+
+.app-shell > .hero .event-selector select {
+  width: 100%;
+}
+
+@media (max-width: 650px) {
+  .hero-pmr-logo {
+    width: 150px;
+    height: 84px;
+    margin-bottom: 16px;
+  }
+}
+
+
+/* Perbaikan khusus logo pada hero Beranda */
+section.hero .hero-content > img.hero-pmr-logo {
+  display: block !important;
+  width: 180px !important;
+  height: auto !important;
+  max-width: 75% !important;
+  max-height: 110px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  margin: 0 auto 22px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  flex-shrink: 0 !important;
+  z-index: 2;
+}
+
+section.hero .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 650px) {
+  section.hero .hero-content > img.hero-pmr-logo {
+    width: 145px !important;
+    max-height: 90px !important;
+    margin-bottom: 18px !important;
+  }
+}
+
+/* Kartu putih di belakang logo PMR SMANEL */
+section.hero .hero-content > img.hero-pmr-logo {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 220px !important;
+  height: 120px !important;
+  max-width: 85% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+
+  background-color: #ffffff !important;
+  padding: 12px 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 8px 24px rgba(65, 0, 0, 0.16) !important;
+
+  margin: 0 auto 24px !important;
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  flex-shrink: 0 !important;
+  z-index: 2;
+}
+
+/* Penyesuaian logo pada layar HP */
+@media (max-width: 650px) {
+  section.hero .hero-content > img.hero-pmr-logo {
+    width: 190px !important;
+    height: 105px !important;
+    padding: 10px 16px !important;
+    border-radius: 16px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+/* Perbesar logo PMR SMANEL di kartu putih */
+section.hero .hero-content > img.hero-pmr-logo {
+  width: 260px !important;
+  height: 140px !important;
+  max-width: 90% !important;
+  max-height: none !important;
+  padding: 8px 12px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background-color: #ffffff !important;
+  border: 1px solid #f1e2e2 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px rgba(65, 0, 0, 0.16) !important;
+  margin: 0 auto 24px !important;
+}
+
+/* Logo lebih proporsional di HP */
+@media (max-width: 650px) {
+  section.hero .hero-content > img.hero-pmr-logo {
+    width: 250px !important;
+    height: 150px !important;
+    padding: 8px 10px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
