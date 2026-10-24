@@ -174,7 +174,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     // Nama repository GitHub Pages
-    base: mode === "production" ? "/portal-pmr-smanel/" : "/",
+    base: "/",
 
     plugins: [
       react(),
