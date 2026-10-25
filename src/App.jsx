@@ -350,13 +350,42 @@ function PublicPage() {
 
         {error && <Message message={error} type="error" />}
 
-        {result && !result.found && (
-          <div className="empty-state">
-            <Search size={34} />
-            <h3>Nama belum ditemukan</h3>
-            <p>Periksa ejaan nama lengkap, lalu coba kembali.</p>
-          </div>
-        )}
+        
+{result && !result.found && (
+  <div className="empty-state">
+    <div className="empty-state-icon">
+      <Search size={36} />
+    </div>
+
+    <span className="empty-state-label">
+      PENGUMUMAN HASIL SELEKSI
+    </span>
+
+    <h3>Tetap Semangat!</h3>
+
+    <h4>Jangan Berhenti Mencoba</h4>
+
+    <p className="empty-state-description">
+      Nama kamu belum ditemukan dalam daftar peserta yang
+      dinyatakan lolos seleksi.
+    </p>
+
+    <p className="empty-state-message">
+      Jangan berkecil hati. Setiap kesempatan adalah ruang
+      untuk belajar, berkembang, dan menjadi lebih baik.
+      Teruslah berusaha, karena kesempatan berikutnya masih terbuka!
+    </p>
+
+    <div className="empty-state-quote">
+      <span className="quote-mark">“</span>
+      <p>
+        Kegagalan bukan akhir dari perjalanan, melainkan awal
+        untuk mencoba kembali dengan lebih baik.
+      </p>
+    </div>
+  </div>
+)}
+
 
         {result?.found && (
           <div className="results-area">
@@ -490,9 +519,14 @@ function AdminPage({ session, onLogout }) {
   const [participantForm, setParticipantForm] = useState({
     id: "", nama: "", kelas: "", sekolah: ""
   });
-  const [resultForm, setResultForm] = useState({
-    pesertaId: "", lombaId: "", status: "BELUM_DITETAPKAN", catatan: ""
-  });
+  
+const [resultForm, setResultForm] = useState({
+  pesertaId: "",
+  lombaIds: ["", "", ""],
+  status: "BELUM_DITETAPKAN",
+  catatan: ""
+});
+
 
   async function loadAll() {
     setBusy(true);
@@ -562,20 +596,57 @@ function AdminPage({ session, onLogout }) {
     }
   }
 
-  async function saveResult(e) {
-    e.preventDefault();
-    setBusy(true);
-    try {
-      const data = await adminRequest("saveResult", { data: resultForm }, session.token);
-      setNotice({ type: "success", text: data.message });
-      setResultForm({ pesertaId: "", lombaId: "", status: "BELUM_DITETAPKAN", catatan: "" });
-      await loadAll();
-    } catch (err) {
-      setNotice({ type: "error", text: err.message });
-    } finally {
-      setBusy(false);
-    }
+  
+async function saveResult(e) {
+  e.preventDefault();
+
+  const lombaIds = [...new Set(
+    resultForm.lombaIds.filter(Boolean)
+  )];
+
+  if (!resultForm.pesertaId) {
+    setNotice({ type: "error", text: "Pilih peserta terlebih dahulu." });
+    return;
   }
+
+  if (!lombaIds.length) {
+    setNotice({ type: "error", text: "Pilih minimal satu lomba." });
+    return;
+  }
+
+  if (lombaIds.length !== resultForm.lombaIds.filter(Boolean).length) {
+    setNotice({ type: "error", text: "Lomba yang sama tidak boleh dipilih dua kali." });
+    return;
+  }
+
+  setBusy(true);
+
+  try {
+    const data = await adminRequest("saveResult", {
+      data: {
+        pesertaId: resultForm.pesertaId,
+        lombaIds,
+        status: resultForm.status,
+        catatan: resultForm.catatan
+      }
+    }, session.token);
+
+    setNotice({ type: "success", text: data.message });
+    setResultForm({
+      pesertaId: "",
+      lombaIds: ["", "", ""],
+      status: "BELUM_DITETAPKAN",
+      catatan: ""
+    });
+
+    await loadAll();
+  } catch (err) {
+    setNotice({ type: "error", text: err.message });
+  } finally {
+    setBusy(false);
+  }
+}
+
 
   async function publish(contest, status) {
     const message = status === "PUBLISHED"
@@ -672,9 +743,12 @@ function AdminPage({ session, onLogout }) {
                   required
                   value={selectedAdminEvent}
                   onChange={e => {
-                    setSelectedAdminEvent(e.target.value);
-                    setResultForm(current => ({ ...current, lombaId: "" }));
-                  }}
+  setSelectedAdminEvent(e.target.value);
+  setResultForm(current => ({
+    ...current,
+    lombaIds: ["", "", ""]
+  }));
+}}
                 >
                   <option value="">Pilih Event</option>
                   {adminEvents.map(event => (
@@ -686,11 +760,67 @@ function AdminPage({ session, onLogout }) {
                   <option value="">Pilih peserta</option>
                   {participants.filter(p => p.status === "AKTIF").map(p => <option key={p.id} value={p.id}>{p.nama} — {p.kelas || p.id}</option>)}
                 </select>
-                <label>Lomba *</label>
-                <select required value={resultForm.lombaId} onChange={e => setResultForm({...resultForm, lombaId: e.target.value})}>
-                  <option value="">Pilih lomba</option>
-                  {filteredContests.map(c => <option key={c.id} value={c.id}>{c.nama}</option>)}
-                </select>
+                
+<label>Lomba 1 *</label>
+<select
+  required
+  value={resultForm.lombaIds[0]}
+  onChange={e => {
+    const next = [...resultForm.lombaIds];
+    next[0] = e.target.value;
+    setResultForm(current => ({ ...current, lombaIds: next }));
+  }}
+>
+  <option value="">Pilih lomba</option>
+  {filteredContests.map(c => (
+    <option key={c.id} value={c.id}>
+      {c.nama}
+    </option>
+  ))}
+</select>
+
+<label>Lomba 2 (opsional)</label>
+<select
+  value={resultForm.lombaIds[1]}
+  onChange={e => {
+    const next = [...resultForm.lombaIds];
+    next[1] = e.target.value;
+    setResultForm(current => ({ ...current, lombaIds: next }));
+  }}
+>
+  <option value="">Tidak ada</option>
+  {filteredContests.map(c => (
+    <option
+      key={c.id}
+      value={c.id}
+      disabled={resultForm.lombaIds.includes(c.id) && resultForm.lombaIds[1] !== c.id}
+    >
+      {c.nama}
+    </option>
+  ))}
+</select>
+
+<label>Lomba 3 (opsional)</label>
+<select
+  value={resultForm.lombaIds[2]}
+  onChange={e => {
+    const next = [...resultForm.lombaIds];
+    next[2] = e.target.value;
+    setResultForm(current => ({ ...current, lombaIds: next }));
+  }}
+>
+  <option value="">Tidak ada</option>
+  {filteredContests.map(c => (
+    <option
+      key={c.id}
+      value={c.id}
+      disabled={resultForm.lombaIds.includes(c.id) && resultForm.lombaIds[2] !== c.id}
+    >
+      {c.nama}
+    </option>
+  ))}
+</select>
+
                 <label>Status kelulusan *</label>
                 <select value={resultForm.status} onChange={e => setResultForm({...resultForm, status: e.target.value})}>
                   <option value="BELUM_DITETAPKAN">Belum ditetapkan</option>
