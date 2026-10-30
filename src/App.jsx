@@ -877,23 +877,49 @@ async function saveResult(e) {
   );
 }
 
-export default function App() {
-  const [page, setPage] = useState("home");
-  const [session, setSession] = useState(null);
 
-  function logout() {
-    if (session?.token) {
-      adminRequest("logout", {}, session.token).catch(() => {});
+export default function App() {
+  const [session, setSession] = useState(() => {
+    try {
+      const savedSession = sessionStorage.getItem("pmr_admin_session");
+      return savedSession ? JSON.parse(savedSession) : null;
+    } catch {
+      sessionStorage.removeItem("pmr_admin_session");
+      return null;
     }
-    setSession(null);
-    setPage("home");
+  });
+
+  const [page, setPage] = useState(() => {
+    return sessionStorage.getItem("pmr_admin_session")
+      ? "admin"
+      : "home";
+  });
+
+
+function logout() {
+  if (session?.token) {
+    adminRequest("logout", {}, session.token).catch(() => {});
   }
+
+  sessionStorage.removeItem("pmr_admin_session");
+  setSession(null);
+  setPage("home");
+}
 
   return (
     <div className="app-shell">
       {page !== "admin" && <Header admin={!!session} onHome={() => setPage("home")} onAdmin={() => setPage(session ? "admin" : "login")} />}
       {page === "home" && <PublicPage />}
-      {page === "login" && <LoginPage onLogin={data => { setSession(data); setPage("admin"); }} onBack={() => setPage("home")} />}
+      {page === "login" && (
+  <LoginPage
+    onLogin={data => {
+      sessionStorage.setItem("pmr_admin_session", JSON.stringify(data));
+      setSession(data);
+      setPage("admin");
+    }}
+    onBack={() => setPage("home")}
+  />
+)}
       {page === "admin" && session && <AdminPage session={session} onLogout={logout} />}
       <footer className="footer"><div><b>PMR SMANEL</b><span>Portal Pengumuman Kelulusan Peserta Lomba · 2026</span></div><small>Informasi resmi panitia seleksi.</small></footer>
     </div>
